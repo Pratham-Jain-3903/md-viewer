@@ -266,13 +266,6 @@ classDiagram
         +chunk_document(text: str, metadata: Dict) List[Chunk]
     }
 
-    class IEmbeddingModel {
-        <<interface>>
-        +embed_text(text: str) List[float]
-        +embed_query(query: str) List[float]
-        +get_dimension() int
-    }
-
     class BaseExtractor {
         <<abstract>>
         +settings: Settings
@@ -362,6 +355,13 @@ classDiagram
         +retrieve(query: str, top_k: int, device_name: str, tags: List[str]) List[Dict]
         -_initialize_vector_store() bool
         -_apply_filters(query: str, device_name: str, tags: List[str]) str
+    }
+
+   class IEmbeddingModel {
+        <<interface>>
+        +embed_text(text: str) List[float]
+        +embed_query(query: str) List[float]
+        +get_dimension() int
     }
 
     class MetadataStore {
